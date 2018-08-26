@@ -147,4 +147,4 @@ def chech_prime(num):
 
 if __name__ == '__main__':
 	#APP.run(debug=True, host='127.0.0.1', port=5000)
-	APP.run(debug=True)
+	APP.run(debug=True, host='0.0.0.0', port=1234)
