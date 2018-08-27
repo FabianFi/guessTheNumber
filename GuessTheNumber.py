@@ -63,9 +63,12 @@ def end_game_three():
 		return question('Ich habe deine Zahl leider nicht verstanden. Bitte wiederhole sie.')
 
 # none number answers:
-@ASK.intent('wordIntent')
-def ask_again():
-	return question('Ich habe dich leider nicht richtig verstanden. Bitte formuliere deine Anfrage oder Zahl erneut.')
+@ASK.intent('wordIntent', default={'word': 'empty'})
+def ask_again(word):
+	if word.lower() == 'abbrechen' or word.lower() == 'stop' or word.lower() == 'beenden' or word.lower() == 'spiel verlassen' or word.lower() == 'verlassen' or word.lower() == 'beende das spiel' or word.lower() == 'spiel beenden' or word.lower() == 'spiel abbrechen' or word.lower() == 'aufhören' or word.lower() == 'exit' or word.lower() == 'cancel' or word.lower() == 'ich möchte aufhören' or word.lower() == 'lass es gut sein' :
+		return statement('Das Spiel wird beendet. Bis zum nächsten Mal.')
+	else :
+		return question('Ich habe dich leider nicht richtig verstanden. Bitte formuliere deine Anfrage oder Zahl erneut.')
 
 # react to the numbers of the user:
 @ASK.intent('numberIntent', convert={'number' : int},
@@ -122,10 +125,10 @@ def give_hint():
 		if chech_prime(session.attributes['number']):
 			session.attributes['hinttext'] = 'Die gesuchte Zahl ist eine Primzahl'
 		else:
-			underNumber = random.randint(session.attributes['number'] - 15, session.attributes['number'] - 10)
+			underNumber = random.randint(session.attributes['number'] - 25, session.attributes['number'] - 5)
 			if underNumber < minNumber:
 				underNumber = minNumber
-			upperNumber = random.randint(session.attributes['number'] + 10, session.attributes['number'] + 15)
+			upperNumber = random.randint(session.attributes['number'] + 5, session.attributes['number'] + 25)
 			if upperNumber > maxNumber:
 				upperNumber = maxNumber
 			session.attributes['hinttext'] = 'Die gesuchte Zahl liegt zwischen '+str(underNumber)+' und '+str(upperNumber)+'.'
