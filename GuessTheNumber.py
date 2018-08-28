@@ -27,7 +27,7 @@ def launch():
 # explain game again if user asks for help:
 @ASK.intent('AMAZON.HelpIntent')
 def give_help():
-	helptext = 'Lass uns ein Spiel spielen. Ich denke an eine Zahl zwischen '+str(minNumber)+' und '+str(maxNumber)+', Du musst raten an welche Zahl ich denke indem du mir Zahlen nennst. Ich sage dir, ob deine genannte Zahl höher oder niedriger ist als meine. Falls du einen Hinweis haben möchtest, sage das Wort Hinweis. Du hast zwei Hinweise pro Runde. Versuche die Zahl in so wenig Anläufen wie möglich zu erraten.'
+	helptext = 'Gesucht ist eine Zahl zwischen '+str(minNumber)+' und '+str(maxNumber)+', Du kannst versuchen, die gesuchte Zahl zu erraten, indem du mir Zahlen nennst. Alexa sagt dir, ob deine genannte Zahl höher oder niedriger ist als die Gesuchte. Falls du einen Hinweis haben möchtest, sage das Wort Hinweis. Du hast zwei Hinweise pro Runde. Versuche die Zahl in so wenig Anläufen wie möglich zu erraten.'
 	return question(helptext)
 
 # end the game before it is solved
